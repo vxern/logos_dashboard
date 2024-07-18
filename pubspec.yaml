@@ -5,6 +5,10 @@ version: 0.1.0
 
 description: Configure, manage and monitor Logos on your communities.
 
+homepage: https://github.com/vxern/logos_dashboard
+repository: https://github.com/vxern/logos_dashboard
+issue_tracker: https://github.com/vxern/logos_dashboard/issues
+
 environment:
   sdk: '>=3.3.4 <4.0.0'
 

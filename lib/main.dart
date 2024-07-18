@@ -7,7 +7,7 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const LogosDashboard(),
+      builder: (context, state) => const Scaffold(),
     ),
   ],
 );
@@ -17,8 +17,13 @@ class LogosDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-      title: 'Logos - Dashboard',
-      routerConfig: _router,
-    );
+        title: 'Logos - Dashboard',
+        routerConfig: _router,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightBlue,
+            brightness: Brightness.dark,
+          ),
+        ),
+      );
 }
-

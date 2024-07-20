@@ -4,7 +4,5 @@ class SocialPage extends StatelessWidget {
   const SocialPage();
 
   @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
-  }
+  Widget build(BuildContext context) => const Scaffold();
 }

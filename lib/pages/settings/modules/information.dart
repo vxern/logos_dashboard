@@ -4,8 +4,5 @@ class InformationPage extends StatelessWidget {
   const InformationPage();
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  Widget build(BuildContext context) => const Scaffold();
 }

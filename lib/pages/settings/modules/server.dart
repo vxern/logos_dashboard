@@ -4,8 +4,5 @@ class ServerPage extends StatelessWidget {
   const ServerPage();
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  Widget build(BuildContext context) => const Scaffold();
 }

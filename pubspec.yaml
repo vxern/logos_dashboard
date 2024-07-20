@@ -25,6 +25,7 @@ dependencies:
   material_symbols_icons: ^4.2771.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
   words: ^0.5.0
@@ -33,3 +34,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/localisations/
+
+flutter_launcher_icons:
+  ios: true
+  image_path: assets/icons/logo.png
+  remove_alpha_ios: true
+  web:
+    generate: true
+  macos:
+    generate: true

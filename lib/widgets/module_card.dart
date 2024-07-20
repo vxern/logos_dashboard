@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_color/flutter_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logos_dashboard/structs/module.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class ModuleCard extends StatelessWidget {
   final String title;
@@ -29,16 +31,20 @@ class ModuleCard extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Card.filled(
-          color: Theme.of(context).cardColor,
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            children: [
-              _heading(context),
-              Expanded(child: _body(context)),
-            ],
+  Widget build(BuildContext context) => Card.filled(
+        color: Theme.of(context).cardColor,
+        clipBehavior: Clip.antiAlias,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: InkWell(
+            onTap: onTap,
+            hoverColor: Theme.of(context).cardColor.darker(10),
+            child: Column(
+              children: [
+                _heading(context),
+                Expanded(child: _body(context)),
+              ],
+            ),
           ),
         ),
       );
@@ -58,10 +64,7 @@ class ModuleCard extends StatelessWidget {
           padding: const EdgeInsets.all(5).w,
           child: Row(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Icon(icon, size: 0.02.sw),
-              ),
+              Icon(icon, size: 0.02.sw),
               Expanded(
                 child: Center(
                   child: Text(
@@ -70,6 +73,7 @@ class ModuleCard extends StatelessWidget {
                   ),
                 ),
               ),
+              Icon(Symbols.open_in_new, size: 0.02.sw),
             ],
           ),
         ),

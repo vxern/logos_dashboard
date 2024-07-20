@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logos_dashboard/pages/home.dart';
 
-void main() => runApp(const LogosDashboard());
+void main() {
+  setUrlStrategy(PathUrlStrategy());
+
+  runApp(const LogosDashboard());
+}
 
 final _router = GoRouter(
   routes: [
     GoRoute(
+      name: 'home',
       path: '/',
       builder: (context, state) => const HomePage(),
     ),

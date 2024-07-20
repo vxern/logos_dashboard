@@ -56,27 +56,27 @@ final _router = GoRouter(
           builder: (context, state) => const ModulesPage(),
           routes: [
             GoRoute(
-              name: 'information',
+              name: 'information-module',
               path: 'information',
               builder: (context, state) => const InformationPage(),
             ),
             GoRoute(
-              name: 'language',
+              name: 'language-module',
               path: 'language',
               builder: (context, state) => const LanguagePage(),
             ),
             GoRoute(
-              name: 'moderation',
+              name: 'moderation-module',
               path: 'moderation',
               builder: (context, state) => const ModerationPage(),
             ),
             GoRoute(
-              name: 'server',
+              name: 'server-module',
               path: 'server',
               builder: (context, state) => const ServerPage(),
             ),
             GoRoute(
-              name: 'social',
+              name: 'social-module',
               path: 'social',
               builder: (context, state) => const SocialPage(),
             ),
@@ -102,10 +102,12 @@ class LogosDashboard extends StatelessWidget {
         title: 'Logos Dashboard',
         routerConfig: _router,
         theme: ThemeData(
+          cardColor: const Color(0xFFD81E5B),
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.lightBlue,
+            seedColor: const Color(0xFF23395B),
             brightness: Brightness.dark,
           ),
+          textTheme: Typography.whiteMountainView,
         ),
       );
 }

@@ -4,6 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logos_dashboard/pages/home.dart';
+import 'package:logos_dashboard/pages/settings/modules.dart';
+import 'package:logos_dashboard/pages/settings/modules/information.dart';
+import 'package:logos_dashboard/pages/settings/modules/language.dart';
+import 'package:logos_dashboard/pages/settings/modules/moderation.dart';
+import 'package:logos_dashboard/pages/settings/modules/server.dart';
+import 'package:logos_dashboard/pages/settings/modules/social.dart';
+
+import 'pages/settings.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
@@ -30,11 +38,51 @@ void main() async {
 }
 
 final _router = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(
       name: 'home',
       path: '/',
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      name: 'settings',
+      path: '/settings',
+      builder: (context, state) => const SettingsPage(),
+      routes: [
+        GoRoute(
+          name: 'modules',
+          path: 'modules',
+          builder: (context, state) => const ModulesPage(),
+          routes: [
+            GoRoute(
+              name: 'information',
+              path: 'information',
+              builder: (context, state) => const InformationPage(),
+            ),
+            GoRoute(
+              name: 'language',
+              path: 'language',
+              builder: (context, state) => const LanguagePage(),
+            ),
+            GoRoute(
+              name: 'moderation',
+              path: 'moderation',
+              builder: (context, state) => const ModerationPage(),
+            ),
+            GoRoute(
+              name: 'server',
+              path: 'server',
+              builder: (context, state) => const ServerPage(),
+            ),
+            GoRoute(
+              name: 'social',
+              path: 'social',
+              builder: (context, state) => const SocialPage(),
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 );

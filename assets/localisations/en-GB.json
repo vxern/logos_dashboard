@@ -1,2 +1,12 @@
 {
+  "modules.information.title": "Information",
+  "modules.information.description": "Journalling, publication of notices",
+  "modules.language.title": "Language",
+  "modules.language.description": "Definitions, translation, language recognition, corrections, answers",
+  "modules.moderation.title": "Moderation",
+  "modules.moderation.description": "Bans, kicks, timeouts, purging, alerts, slowmode, reports, verification",
+  "modules.server.title": "Server",
+  "modules.server.description": "Tickets, suggestions, resources, dynamic VCs, role indicators",
+  "modules.social.title": "Social",
+  "modules.social.description": "Music, profiles, praises"
 }

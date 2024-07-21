@@ -62,18 +62,22 @@ class ModuleCard extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(5).w,
-          child: Row(
+          child: Stack(
             children: [
-              Icon(icon, size: 0.02.sw),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Icon(icon, size: 0.02.sw),
+              ),
+              Center(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
-              Icon(Symbols.open_in_new, size: 0.02.sw),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(Symbols.open_in_new, size: 0.02.sw),
+              ),
             ],
           ),
         ),

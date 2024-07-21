@@ -23,10 +23,12 @@ class ModulesPage extends StatelessWidget {
 
   List<Widget> _moduleGridTiles(BuildContext context) => Module.values
       .map(
-        (module) => ModuleCard.fromModule(
-          context,
-          module,
-          onTap: () => context.goNamed('${module.name}-module'),
+        (module) => GridTile(
+          child: ModuleCard.fromModule(
+            context,
+            module,
+            onTap: () => context.goNamed('${module.name}-module'),
+          ),
         ),
       )
       .toList();

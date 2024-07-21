@@ -1,57 +1,51 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_color/flutter_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:logos_dashboard/structs/module.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
-class ModuleCard extends StatelessWidget {
+abstract class LogosCard extends StatelessWidget {
   final String title;
   final String description;
   final IconData icon;
+  final Color color;
   final VoidCallback? onTap;
 
-  const ModuleCard({
+  bool get isClickable => onTap != null;
+
+  const LogosCard({
     required this.title,
     required this.description,
     required this.icon,
+    required this.color,
     this.onTap,
   });
 
-  factory ModuleCard.fromModule(
-    BuildContext context,
-    Module module, {
-    VoidCallback? onTap,
-  }) =>
-      ModuleCard(
-        title: context.tr('modules.${module.name}.title'),
-        description: context.tr('modules.${module.name}.description'),
-        icon: module.icon,
-        onTap: onTap,
-      );
-
   @override
   Widget build(BuildContext context) => Card.filled(
-        color: Theme.of(context).cardColor,
+        color: color,
         clipBehavior: Clip.antiAlias,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: InkWell(
-            onTap: onTap,
-            hoverColor: Theme.of(context).cardColor.darker(10),
-            child: Column(
-              children: [
-                _heading(context),
-                Expanded(child: _body(context)),
-              ],
-            ),
-          ),
+        child: isClickable ? _clickableContents(context) : _contents(context),
+      );
+
+  Widget _clickableContents(BuildContext context) => MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: InkWell(
+          onTap: onTap,
+          hoverColor: color.darker(10),
+          child: _contents(context),
         ),
+      );
+
+  Widget _contents(BuildContext context) => Column(
+        children: [
+          _heading(context),
+          Expanded(child: _body(context)),
+        ],
       );
 
   Widget _heading(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: color,
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).shadowColor,
@@ -74,10 +68,11 @@ class ModuleCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Icon(Symbols.open_in_new, size: 0.02.sw),
-              ),
+              if (isClickable)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Icon(Symbols.open_in_new, size: 0.02.sw),
+                ),
             ],
           ),
         ),
@@ -85,12 +80,8 @@ class ModuleCard extends StatelessWidget {
 
   Widget _body(BuildContext context) => Padding(
         padding: const EdgeInsets.all(15).w,
-        child: Center(
-          child: Text(
-            description,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-        ),
+        child: body(context),
       );
+
+  Widget body(BuildContext context);
 }

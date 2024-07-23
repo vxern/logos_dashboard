@@ -6,35 +6,48 @@ enum ConfigurationOptionType {
   object,
 }
 
-class ConfigurationOption {
+abstract class ConfigurationOption {
   final String name;
-  final ConfigurationOptionType type;
-  final ConfigurationOptionType? modifierType;
-  final Set<ConfigurationOption> options;
 
-  const ConfigurationOption._(
-    this.name,
-    this.type, {
-    this.modifierType,
-    this.options = const {},
-  });
+  const ConfigurationOption(this.name);
 
-  const ConfigurationOption.string(String name)
-      : this._(name, ConfigurationOptionType.string);
+  const factory ConfigurationOption.string(String name) = _String;
 
-  const ConfigurationOption.boolean(String name)
-      : this._(name, ConfigurationOptionType.boolean);
+  const factory ConfigurationOption.boolean(String name) = _Boolean;
 
-  const ConfigurationOption.number(String name)
-      : this._(name, ConfigurationOptionType.number);
+  const factory ConfigurationOption.number(String name) = _Number;
 
-  const ConfigurationOption.array(
+  const factory ConfigurationOption.array(
     String name, {
     required ConfigurationOptionType type,
-  }) : this._(name, ConfigurationOptionType.array, modifierType: type);
+  }) = _Array;
 
-  const ConfigurationOption.object(
+  const factory ConfigurationOption.object(
     String name, {
     required Set<ConfigurationOption> options,
-  }) : this._(name, ConfigurationOptionType.object, options: options);
+  }) = _Object;
+}
+
+class _String extends ConfigurationOption {
+  const _String(super.name);
+}
+
+class _Boolean extends ConfigurationOption {
+  const _Boolean(super.name);
+}
+
+class _Number extends ConfigurationOption {
+  const _Number(super.name);
+}
+
+class _Array extends ConfigurationOption {
+  final ConfigurationOptionType type;
+
+  const _Array(super.name, {required this.type});
+}
+
+class _Object extends ConfigurationOption {
+  final Set<ConfigurationOption> options;
+
+  const _Object(super.name, {required this.options});
 }

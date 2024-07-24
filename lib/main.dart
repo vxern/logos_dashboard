@@ -4,14 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logos_dashboard/pages/home.dart';
+import 'package:logos_dashboard/pages/settings.dart';
+import 'package:logos_dashboard/pages/settings/features.dart';
 import 'package:logos_dashboard/pages/settings/modules.dart';
-import 'package:logos_dashboard/pages/settings/modules/information.dart';
-import 'package:logos_dashboard/pages/settings/modules/language.dart';
-import 'package:logos_dashboard/pages/settings/modules/moderation.dart';
-import 'package:logos_dashboard/pages/settings/modules/server.dart';
-import 'package:logos_dashboard/pages/settings/modules/social.dart';
-
-import 'pages/settings.dart';
+import 'package:logos_dashboard/structs/module.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
@@ -54,33 +50,15 @@ final _router = GoRouter(
           name: 'modules',
           path: 'modules',
           builder: (context, state) => const ModulesPage(),
-          routes: [
-            GoRoute(
-              name: 'information-module',
-              path: 'information',
-              builder: (context, state) => const InformationPage(),
-            ),
-            GoRoute(
-              name: 'language-module',
-              path: 'language',
-              builder: (context, state) => const LanguagePage(),
-            ),
-            GoRoute(
-              name: 'moderation-module',
-              path: 'moderation',
-              builder: (context, state) => const ModerationPage(),
-            ),
-            GoRoute(
-              name: 'server-module',
-              path: 'server',
-              builder: (context, state) => const ServerPage(),
-            ),
-            GoRoute(
-              name: 'social-module',
-              path: 'social',
-              builder: (context, state) => const SocialPage(),
-            ),
-          ],
+          routes: Module.values
+              .map(
+                (module) => GoRoute(
+                  name: '${module.name}-module',
+                  path: module.name,
+                  builder: (context, state) => FeaturesPage(module: module),
+                ),
+              )
+              .toList(),
         ),
       ],
     ),

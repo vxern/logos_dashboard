@@ -15,26 +15,26 @@ enum Feature {
   notices(
     Symbols.info,
     options: {
-      Option.object(
+      Option.complex(
         'information',
         options: {
           Option.string('channelId'),
           Option.string('inviteLink'),
         },
       ),
-      Option.object(
+      Option.complex(
         'resources',
         options: {
           Option.string('channelId'),
         },
       ),
-      Option.object(
+      Option.complex(
         'roles',
         options: {
           Option.string('channelId'),
         },
       ),
-      Option.object(
+      Option.complex(
         'welcome',
         options: {
           Option.string('channelId'),
@@ -51,7 +51,18 @@ enum Feature {
     Symbols.draw,
     options: {},
   ),
-  cefr(Symbols.abc),
+  cefr(
+    Symbols.abc,
+    options: {
+      Option.boolean('extended'),
+      Option.complex(
+        'examples',
+        options: {
+          Option.cefrLevels('levels'),
+        },
+      ),
+    },
+  ),
   game(
     Symbols.stadia_controller,
     options: {},
@@ -73,10 +84,21 @@ enum Feature {
   targetOnly(
     Symbols.target,
     options: {
-      Option.array('channelIds', type: OptionType.string),
+      Option.multiple(
+        'channelIds',
+        option: Option.string('channelId'),
+      ),
     },
   ),
-  roleLanguages(Symbols.work),
+  roleLanguages(
+    Symbols.work,
+    options: {
+      Option.map(
+        'ids',
+        entries: MapEntry(OptionType.string, OptionType.string),
+      ),
+    },
+  ),
   alerts(
     Symbols.error,
     options: {
@@ -109,25 +131,128 @@ enum Feature {
       Option.boolean('journaling'),
     },
   ),
-  warns(Symbols.warning),
-  reports(Symbols.flag),
-  verification(Symbols.new_releases),
-  dynamicVoiceChannels(Symbols.voice_chat),
+  warns(
+    Symbols.warning,
+    options: {
+      Option.boolean('journaling'),
+      Option.timeStruct('expiration'),
+      Option.number('limit'),
+      Option.complex(
+        'autoTimeout',
+        options: {
+          Option.timeStruct('duration'),
+        },
+      ),
+    },
+  ),
+  reports(
+    Symbols.flag,
+    options: {
+      Option.string('channelId'),
+      Option.boolean('journaling'),
+      Option.rateLimit('rateLimit'),
+      Option.management('management'),
+    },
+  ),
+  verification(
+    Symbols.new_releases,
+    options: {
+      Option.string('channelId'),
+      Option.boolean('journaling'),
+      Option.management('management'),
+      Option.complex(
+        'voting',
+        options: {
+          Option.management('management'),
+          Option.complex(
+            'verdict',
+            options: {
+              Option.verdictRequirement('acceptance'),
+              Option.verdictRequirement('rejection'),
+            },
+          ),
+        },
+      ),
+    },
+  ),
+  dynamicVoiceChannels(
+    Symbols.voice_chat,
+    options: {
+      Option.multiple(
+        'channels',
+        option: Option.complex(
+          'channel',
+          options: {
+            Option.string('id'),
+            Option.number('minimum'),
+            Option.number('maximum'),
+          },
+        ),
+      ),
+    },
+  ),
   entry(
     Symbols.door_open,
     options: {},
   ),
-  roleIndicators(Symbols.work),
-  suggestions(Symbols.emoji_objects),
-  resource(Symbols.book),
-  tickets(Symbols.confirmation_number),
+  roleIndicators(
+    Symbols.work,
+    options: {
+      Option.number('limit'),
+      Option.multiple(
+        'roles',
+        option: Option.complex(
+          'role',
+          options: {
+            Option.string('roleId'),
+            Option.string('indicator'),
+          },
+        ),
+      ),
+    },
+  ),
+  suggestions(
+    Symbols.emoji_objects,
+    options: {
+      Option.string('channelId'),
+      Option.boolean('journaling'),
+      Option.rateLimit('rateLimit'),
+      Option.management('management'),
+    },
+  ),
+  resource(
+    Symbols.book,
+    options: {
+      Option.string('channelId'),
+      Option.boolean('journaling'),
+      Option.rateLimit('rateLimit'),
+      Option.management('management'),
+    },
+  ),
+  tickets(
+    Symbols.confirmation_number,
+    options: {
+      Option.string('channelId'),
+      Option.string('categoryId'),
+      Option.boolean('journaling'),
+      Option.rateLimit('rateLimit'),
+      Option.number('limit'),
+      Option.management('management'),
+    },
+  ),
   music(
     Symbols.note,
     options: {
       Option.number('implicitVolume'),
     },
   ),
-  praises(Symbols.folded_hands),
+  praises(
+    Symbols.folded_hands,
+    options: {
+      Option.boolean('journaling'),
+      Option.rateLimit('rateLimit'),
+    },
+  ),
   profile(
     Symbols.person,
     options: {},

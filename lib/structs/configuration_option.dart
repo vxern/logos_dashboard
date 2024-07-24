@@ -2,8 +2,6 @@ enum ConfigurationOptionType {
   string,
   boolean,
   number,
-  array,
-  object,
 }
 
 abstract class ConfigurationOption {
@@ -17,15 +15,36 @@ abstract class ConfigurationOption {
 
   const factory ConfigurationOption.number(String name) = _Number;
 
-  const factory ConfigurationOption.array(
+  const factory ConfigurationOption.multiple(
     String name, {
-    required ConfigurationOptionType type,
-  }) = _Array;
+    required ConfigurationOption option,
+  }) = _Multiple;
 
-  const factory ConfigurationOption.object(
+  const factory ConfigurationOption.complex(
     String name, {
     required Set<ConfigurationOption> options,
-  }) = _Object;
+  }) = _Complex;
+
+  const factory ConfigurationOption.group(
+    String name, {
+    required Set<ConfigurationOption> options,
+  }) = _Group;
+
+  const factory ConfigurationOption.map(
+    String name, {
+    required MapEntry<ConfigurationOptionType, ConfigurationOptionType> entries,
+  }) = _Map;
+
+  const factory ConfigurationOption.timeStruct(String name) = _TimeStruct;
+
+  const factory ConfigurationOption.rateLimit(String name) = _RateLimit;
+
+  const factory ConfigurationOption.management(String name) = _Management;
+
+  const factory ConfigurationOption.verdictRequirement(String name) =
+      _VerdictRequirement;
+
+  const factory ConfigurationOption.cefrLevels(String name) = _CefrLevels;
 }
 
 class _String extends ConfigurationOption {
@@ -40,14 +59,46 @@ class _Number extends ConfigurationOption {
   const _Number(super.name);
 }
 
-class _Array extends ConfigurationOption {
-  final ConfigurationOptionType type;
+class _Multiple extends ConfigurationOption {
+  final ConfigurationOption option;
 
-  const _Array(super.name, {required this.type});
+  const _Multiple(super.name, {required this.option});
 }
 
-class _Object extends ConfigurationOption {
+class _Complex extends ConfigurationOption {
   final Set<ConfigurationOption> options;
 
-  const _Object(super.name, {required this.options});
+  const _Complex(super.name, {required this.options});
+}
+
+class _Group extends ConfigurationOption {
+  final Set<ConfigurationOption> options;
+
+  const _Group(super.name, {required this.options});
+}
+
+class _Map extends ConfigurationOption {
+  final MapEntry<ConfigurationOptionType, ConfigurationOptionType> entries;
+
+  const _Map(super.name, {required this.entries});
+}
+
+class _TimeStruct extends ConfigurationOption {
+  const _TimeStruct(super.name);
+}
+
+class _RateLimit extends ConfigurationOption {
+  const _RateLimit(super.name);
+}
+
+class _Management extends ConfigurationOption {
+  const _Management(super.name);
+}
+
+class _VerdictRequirement extends ConfigurationOption {
+  const _VerdictRequirement(super.name);
+}
+
+class _CefrLevels extends ConfigurationOption {
+  const _CefrLevels(super.name);
 }

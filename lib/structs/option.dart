@@ -25,11 +25,6 @@ abstract class Option {
     required Set<Option> options,
   }) = _Complex;
 
-  const factory Option.group(
-    String name, {
-    required Set<Option> options,
-  }) = _Group;
-
   const factory Option.map(
     String name, {
     required MapEntry<OptionType, OptionType> entries,
@@ -68,12 +63,6 @@ class _Complex extends Option {
   final Set<Option> options;
 
   const _Complex(super.name, {required this.options});
-}
-
-class _Group extends Option {
-  final Set<Option> options;
-
-  const _Group(super.name, {required this.options});
 }
 
 class _Map extends Option {

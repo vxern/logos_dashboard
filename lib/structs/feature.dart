@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:logos_dashboard/structs/configuration_option.dart';
+import 'package:logos_dashboard/structs/option.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
-
-typedef OptionType = ConfigurationOptionType;
-typedef Option = ConfigurationOption;
 
 enum Feature {
   journalling(
@@ -259,7 +256,7 @@ enum Feature {
   );
 
   final IconData icon;
-  final Set<ConfigurationOption> options;
+  final Set<Option> options;
 
   const Feature(this.icon, {required this.options});
 }

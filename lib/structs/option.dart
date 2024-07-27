@@ -4,89 +4,90 @@ enum OptionType {
   number,
 }
 
-abstract class Option {
+sealed class Option {
   final String name;
 
   const Option(this.name);
 
-  const factory Option.string(String name) = _String;
+  const factory Option.string(String name) = StringOption;
 
-  const factory Option.boolean(String name) = _Boolean;
+  const factory Option.boolean(String name) = BooleanOption;
 
-  const factory Option.number(String name) = _Number;
+  const factory Option.number(String name) = NumberOption;
 
   const factory Option.multiple(
     String name, {
     required Option option,
-  }) = _Multiple;
+  }) = MultipleOption;
 
   const factory Option.complex(
     String name, {
     required Set<Option> options,
-  }) = _Complex;
+  }) = ComplexOption;
 
   const factory Option.map(
     String name, {
     required MapEntry<OptionType, OptionType> entries,
-  }) = _Map;
+  }) = MapOption;
 
-  const factory Option.timeStruct(String name) = _TimeStruct;
+  const factory Option.timeStruct(String name) = TimeStructOption;
 
-  const factory Option.rateLimit(String name) = _RateLimit;
+  const factory Option.rateLimit(String name) = RateLimitOption;
 
-  const factory Option.management(String name) = _Management;
+  const factory Option.management(String name) = ManagementOption;
 
-  const factory Option.verdictRequirement(String name) = _VerdictRequirement;
+  const factory Option.verdictRequirement(String name) =
+      VerdictRequirementOption;
 
-  const factory Option.cefrLevels(String name) = _CefrLevels;
+  const factory Option.cefrLevels(String name) = CefrLevelsOption;
 }
 
-class _String extends Option {
-  const _String(super.name);
+class StringOption extends Option {
+  const StringOption(super.name);
 }
 
-class _Boolean extends Option {
-  const _Boolean(super.name);
+class BooleanOption extends Option {
+  const BooleanOption(super.name);
 }
 
-class _Number extends Option {
-  const _Number(super.name);
+class NumberOption extends Option {
+  const NumberOption(super.name);
 }
 
-class _Multiple extends Option {
+class MultipleOption extends Option {
   final Option option;
 
-  const _Multiple(super.name, {required this.option});
+  const MultipleOption(super.name, {required this.option});
 }
 
-class _Complex extends Option {
+class ComplexOption extends Option {
   final Set<Option> options;
 
-  const _Complex(super.name, {required this.options});
+  const ComplexOption(super.name, {required this.options});
 }
 
-class _Map extends Option {
+class MapOption extends Option {
   final MapEntry<OptionType, OptionType> entries;
 
-  const _Map(super.name, {required this.entries});
+  const MapOption(super.name, {required this.entries});
 }
 
-class _TimeStruct extends Option {
-  const _TimeStruct(super.name);
+class TimeStructOption extends Option {
+  const TimeStructOption(super.name);
 }
 
-class _RateLimit extends Option {
-  const _RateLimit(super.name);
+class RateLimitOption extends Option {
+  const RateLimitOption(super.name);
 }
 
-class _Management extends Option {
-  const _Management(super.name);
+class ManagementOption extends Option {
+  const ManagementOption(super.name);
 }
 
-class _VerdictRequirement extends Option {
-  const _VerdictRequirement(super.name);
+class VerdictRequirementOption extends Option {
+  const VerdictRequirementOption(super.name);
 }
 
-class _CefrLevels extends Option {
-  const _CefrLevels(super.name);
+class CefrLevelsOption extends Option {
+  const CefrLevelsOption(super.name);
 }

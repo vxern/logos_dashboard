@@ -51,7 +51,6 @@ enum Feature {
   cefr(
     Symbols.abc,
     options: {
-      Option.boolean('extended'),
       Option.complex(
         'examples',
         options: {
@@ -113,25 +112,25 @@ enum Feature {
   purging(
     Symbols.delete,
     options: {
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
     },
   ),
   slowmode(
     Symbols.relax,
     options: {
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
     },
   ),
   timeouts(
     Symbols.clock_loader_10,
     options: {
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
     },
   ),
   warns(
     Symbols.warning,
     options: {
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.timeStruct('expiration'),
       Option.number('limit'),
       Option.complex(
@@ -146,7 +145,7 @@ enum Feature {
     Symbols.flag,
     options: {
       Option.string('channelId'),
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
       Option.management('management'),
     },
@@ -155,7 +154,7 @@ enum Feature {
     Symbols.new_releases,
     options: {
       Option.string('channelId'),
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.management('management'),
       Option.complex(
         'voting',
@@ -212,7 +211,7 @@ enum Feature {
     Symbols.emoji_objects,
     options: {
       Option.string('channelId'),
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
       Option.management('management'),
     },
@@ -221,7 +220,7 @@ enum Feature {
     Symbols.book,
     options: {
       Option.string('channelId'),
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
       Option.management('management'),
     },
@@ -231,7 +230,7 @@ enum Feature {
     options: {
       Option.string('channelId'),
       Option.string('categoryId'),
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
       Option.number('limit'),
       Option.management('management'),
@@ -246,7 +245,7 @@ enum Feature {
   praises(
     Symbols.folded_hands,
     options: {
-      Option.boolean('journaling'),
+      Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
     },
   ),
@@ -259,4 +258,8 @@ enum Feature {
   final Set<Option> options;
 
   const Feature(this.icon, {required this.options});
+
+  String get title => 'features.$name.title';
+
+  String get description => 'features.$name.description';
 }

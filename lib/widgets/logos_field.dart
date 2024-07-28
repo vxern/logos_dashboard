@@ -20,23 +20,23 @@ abstract class LogosField<T extends Option> extends StatelessWidget {
 
   static StatelessWidget fromOption<T extends Option>(T option) =>
       switch (option) {
-        final StringOption option => StringField.fromOption(option),
-        final BooleanOption option => BooleanField.fromOption(option),
-        final NumberOption option => NumberField.fromOption(option),
-        final MultipleOption option => MultipleField.fromOption(option),
-        final ComplexOption option => ComplexField.fromOption(option),
-        final MapOption option => MapField.fromOption(option),
-        final TimeStructOption option => TimeStructField.fromOption(option),
-        final RateLimitOption option => RateLimitField.fromOption(option),
-        final ManagementOption option => ManagementField.fromOption(option),
-        final VerdictRequirementOption option =>
+        StringOption() => StringField.fromOption(option),
+        BooleanOption() => BooleanField.fromOption(option),
+        NumberOption() => NumberField.fromOption(option),
+        MultipleOption() => MultipleField.fromOption(option),
+        ComplexOption() => ComplexField.fromOption(option),
+        MapOption() => MapField.fromOption(option),
+        TimeStructOption() => TimeStructField.fromOption(option),
+        RateLimitOption() => RateLimitField.fromOption(option),
+        ManagementOption() => ManagementField.fromOption(option),
+        VerdictRequirementOption() =>
           VerdictRequirementField.fromOption(option),
-        final CefrLevelsOption option => CefrLevelsField.fromOption(option),
+        CefrLevelsOption() => CefrLevelsField.fromOption(option),
       };
 
   @override
-  Widget build(BuildContext context) => Card.filled(
-        color: Theme.of(context).primaryColor,
+  Widget build(BuildContext context) => Card.outlined(
+        color: Theme.of(context).primaryColorLight,
         clipBehavior: Clip.antiAlias,
         child: _contents(context),
       );
@@ -49,8 +49,9 @@ abstract class LogosField<T extends Option> extends StatelessWidget {
       );
 
   Widget _heading(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(5).w,
-        child: Center(
+        padding: const EdgeInsets.all(8).w,
+        child: Align(
+          alignment: Alignment.centerLeft,
           child: Text(
             // TODO(vxern): Localise.
             option.name,

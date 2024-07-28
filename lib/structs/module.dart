@@ -4,14 +4,18 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 enum Module {
   information(
-    Symbols.info,
+    title: 'modules.information.title',
+    description: 'modules.information.description',
+    icon: Symbols.info,
     features: {
       Feature.journalling,
       Feature.notices,
     },
   ),
   language(
-    Symbols.translate,
+    title: 'modules.language.title',
+    description: 'modules.language.description',
+    icon: Symbols.translate,
     features: {
       Feature.answers,
       Feature.corrections,
@@ -25,7 +29,9 @@ enum Module {
     },
   ),
   moderation(
-    Symbols.shield,
+    title: 'modules.moderation.title',
+    description: 'modules.moderation.description',
+    icon: Symbols.shield,
     features: {
       Feature.alerts,
       Feature.policy,
@@ -39,7 +45,9 @@ enum Module {
     },
   ),
   server(
-    Symbols.settings,
+    title: 'modules.server.title',
+    description: 'modules.server.description',
+    icon: Symbols.settings,
     features: {
       Feature.dynamicVoiceChannels,
       Feature.entry,
@@ -50,7 +58,9 @@ enum Module {
     },
   ),
   social(
-    Symbols.handshake,
+    title: 'modules.social.title',
+    description: 'modules.social.description',
+    icon: Symbols.handshake,
     features: {
       Feature.music,
       Feature.praises,
@@ -58,8 +68,15 @@ enum Module {
     },
   );
 
+  final String title;
+  final String description;
   final IconData icon;
   final Set<Feature> features;
 
-  const Module(this.icon, {required this.features});
+  const Module({
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.features,
+  });
 }

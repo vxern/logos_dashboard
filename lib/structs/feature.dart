@@ -4,13 +4,17 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 enum Feature {
   journalling(
-    Symbols.article,
+    title: 'features.journalling.title',
+    description: 'features.journalling.description',
+    icon: Symbols.article,
     options: {
       Option.string('channelId'),
     },
   ),
   notices(
-    Symbols.info,
+    title: 'features.notices.title',
+    description: 'features.notices.description',
+    icon: Symbols.info,
     options: {
       Option.complex(
         'information',
@@ -41,15 +45,21 @@ enum Feature {
     },
   ),
   answers(
-    Symbols.contact_support,
+    title: 'features.answers.title',
+    description: 'features.answers.description',
+    icon: Symbols.contact_support,
     options: {},
   ),
   corrections(
-    Symbols.draw,
+    title: 'features.corrections.title',
+    description: 'features.corrections.description',
+    icon: Symbols.draw,
     options: {},
   ),
   cefr(
-    Symbols.abc,
+    title: 'features.cefr.title',
+    description: 'features.cefr.description',
+    icon: Symbols.abc,
     options: {
       Option.complex(
         'examples',
@@ -60,25 +70,35 @@ enum Feature {
     },
   ),
   game(
-    Symbols.stadia_controller,
+    title: 'features.game.title',
+    description: 'features.game.description',
+    icon: Symbols.stadia_controller,
     options: {},
   ),
   resources(
-    Symbols.book,
+    title: 'features.resources.title',
+    description: 'features.resources.description',
+    icon: Symbols.book,
     options: {
       Option.string('url'),
     },
   ),
   translate(
-    Symbols.translate,
+    title: 'features.translate.title',
+    description: 'features.translate.description',
+    icon: Symbols.translate,
     options: {},
   ),
   word(
-    Symbols.match_word,
+    title: 'features.word.title',
+    description: 'features.word.description',
+    icon: Symbols.match_word,
     options: {},
   ),
   targetOnly(
-    Symbols.target,
+    title: 'features.targetOnly.title',
+    description: 'features.targetOnly.description',
+    icon: Symbols.target,
     options: {
       Option.multiple(
         'channelIds',
@@ -87,7 +107,9 @@ enum Feature {
     },
   ),
   roleLanguages(
-    Symbols.work,
+    title: 'features.roleLanguages.title',
+    description: 'features.roleLanguages.description',
+    icon: Symbols.work,
     options: {
       Option.map(
         'ids',
@@ -96,39 +118,53 @@ enum Feature {
     },
   ),
   alerts(
-    Symbols.error,
+    title: 'features.alerts.title',
+    description: 'features.alerts.description',
+    icon: Symbols.error,
     options: {
       Option.string('channelId'),
     },
   ),
   policy(
-    Symbols.campaign,
+    title: 'features.policy.title',
+    description: 'features.policy.description',
+    icon: Symbols.campaign,
     options: {},
   ),
   rules(
-    Symbols.gavel,
+    title: 'features.rules.title',
+    description: 'features.rules.description',
+    icon: Symbols.gavel,
     options: {},
   ),
   purging(
-    Symbols.delete,
+    title: 'features.purging.title',
+    description: 'features.purging.description',
+    icon: Symbols.delete,
     options: {
       Option.boolean('journalling'),
     },
   ),
   slowmode(
-    Symbols.relax,
+    title: 'features.slowmode.title',
+    description: 'features.slowmode.description',
+    icon: Symbols.relax,
     options: {
       Option.boolean('journalling'),
     },
   ),
   timeouts(
-    Symbols.clock_loader_10,
+    title: 'features.timeouts.title',
+    description: 'features.timeouts.description',
+    icon: Symbols.clock_loader_10,
     options: {
       Option.boolean('journalling'),
     },
   ),
   warns(
-    Symbols.warning,
+    title: 'features.warns.title',
+    description: 'features.warns.description',
+    icon: Symbols.warning,
     options: {
       Option.boolean('journalling'),
       Option.timeStruct('expiration'),
@@ -142,7 +178,9 @@ enum Feature {
     },
   ),
   reports(
-    Symbols.flag,
+    title: 'features.reports.title',
+    description: 'features.reports.description',
+    icon: Symbols.flag,
     options: {
       Option.string('channelId'),
       Option.boolean('journalling'),
@@ -151,7 +189,9 @@ enum Feature {
     },
   ),
   verification(
-    Symbols.new_releases,
+    title: 'features.verification.title',
+    description: 'features.verification.description',
+    icon: Symbols.new_releases,
     options: {
       Option.string('channelId'),
       Option.boolean('journalling'),
@@ -172,7 +212,9 @@ enum Feature {
     },
   ),
   dynamicVoiceChannels(
-    Symbols.voice_chat,
+    title: 'features.dynamicVoiceChannels.title',
+    description: 'features.dynamicVoiceChannels.description',
+    icon: Symbols.voice_chat,
     options: {
       Option.multiple(
         'channels',
@@ -188,11 +230,15 @@ enum Feature {
     },
   ),
   entry(
-    Symbols.door_open,
+    title: 'features.entry.title',
+    description: 'features.entry.description',
+    icon: Symbols.door_open,
     options: {},
   ),
   roleIndicators(
-    Symbols.work,
+    title: 'features.roleIndicators.title',
+    description: 'features.roleIndicators.description',
+    icon: Symbols.work,
     options: {
       Option.number('limit'),
       Option.multiple(
@@ -208,7 +254,9 @@ enum Feature {
     },
   ),
   suggestions(
-    Symbols.emoji_objects,
+    title: 'features.suggestions.title',
+    description: 'features.suggestions.description',
+    icon: Symbols.emoji_objects,
     options: {
       Option.string('channelId'),
       Option.boolean('journalling'),
@@ -217,7 +265,9 @@ enum Feature {
     },
   ),
   resource(
-    Symbols.book,
+    title: 'features.resource.title',
+    description: 'features.resource.description',
+    icon: Symbols.book,
     options: {
       Option.string('channelId'),
       Option.boolean('journalling'),
@@ -226,7 +276,9 @@ enum Feature {
     },
   ),
   tickets(
-    Symbols.confirmation_number,
+    title: 'features.tickets.title',
+    description: 'features.tickets.description',
+    icon: Symbols.confirmation_number,
     options: {
       Option.string('channelId'),
       Option.string('categoryId'),
@@ -237,29 +289,38 @@ enum Feature {
     },
   ),
   music(
-    Symbols.note,
+    title: 'features.music.title',
+    description: 'features.music.description',
+    icon: Symbols.note,
     options: {
       Option.number('implicitVolume'),
     },
   ),
   praises(
-    Symbols.folded_hands,
+    title: 'features.praises.title',
+    description: 'features.praises.description',
+    icon: Symbols.folded_hands,
     options: {
       Option.boolean('journalling'),
       Option.rateLimit('rateLimit'),
     },
   ),
   profile(
-    Symbols.person,
+    title: 'features.profile.title',
+    description: 'features.profile.description',
+    icon: Symbols.person,
     options: {},
   );
 
+  final String title;
+  final String description;
   final IconData icon;
   final Set<Option> options;
 
-  const Feature(this.icon, {required this.options});
-
-  String get title => 'features.$name.title';
-
-  String get description => 'features.$name.description';
+  const Feature({
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.options,
+  });
 }

@@ -18,8 +18,8 @@ class ModuleCard extends LogosCard {
     VoidCallback? onTap,
   }) =>
       ModuleCard._(
-        title: context.tr('modules.${module.name}.title'),
-        description: context.tr('modules.${module.name}.description'),
+        title: context.tr(module.title),
+        description: context.tr(module.description),
         color: Theme.of(context).cardColor,
         icon: module.icon,
         onTap: onTap,

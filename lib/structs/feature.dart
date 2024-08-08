@@ -100,7 +100,7 @@ enum Feature {
     description: 'features.targetOnly.description',
     icon: Symbols.target,
     options: {
-      Option.tuple(
+      Option.array(
         'channelIds',
         option: Option.string('channelId'),
       ),
@@ -216,7 +216,7 @@ enum Feature {
     description: 'features.dynamicVoiceChannels.description',
     icon: Symbols.voice_chat,
     options: {
-      Option.tuple(
+      Option.array(
         'channels',
         option: Option.object(
           'channel',
@@ -241,7 +241,7 @@ enum Feature {
     icon: Symbols.work,
     options: {
       Option.number('limit'),
-      Option.tuple(
+      Option.array(
         'roles',
         option: Option.object(
           'role',

@@ -36,7 +36,10 @@ class FeatureCard extends LogosCard {
       );
 
   List<Widget> _featureFields() => feature.options
-      .map(LogosField.fromOption)
+      .map(
+        (option) =>
+            LogosField.fromOption(option, optionKey: option.name, root: true),
+      )
       .map((field) => Expanded(child: field))
       .toList();
 }

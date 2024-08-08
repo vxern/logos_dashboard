@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 0.05.sw, vertical: 0.05.sh),
-        child: Text('Home'),
+        // TODO(vxern): Implement.
+        child: const Text('Home'),
       );
 }

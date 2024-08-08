@@ -16,26 +16,26 @@ enum Feature {
     description: 'features.notices.description',
     icon: Symbols.info,
     options: {
-      Option.complex(
+      Option.object(
         'information',
         options: {
           Option.string('channelId'),
           Option.string('inviteLink'),
         },
       ),
-      Option.complex(
+      Option.object(
         'resources',
         options: {
           Option.string('channelId'),
         },
       ),
-      Option.complex(
+      Option.object(
         'roles',
         options: {
           Option.string('channelId'),
         },
       ),
-      Option.complex(
+      Option.object(
         'welcome',
         options: {
           Option.string('channelId'),
@@ -61,7 +61,7 @@ enum Feature {
     description: 'features.cefr.description',
     icon: Symbols.abc,
     options: {
-      Option.complex(
+      Option.object(
         'examples',
         options: {
           Option.cefrLevels('levels'),
@@ -100,7 +100,7 @@ enum Feature {
     description: 'features.targetOnly.description',
     icon: Symbols.target,
     options: {
-      Option.multiple(
+      Option.tuple(
         'channelIds',
         option: Option.string('channelId'),
       ),
@@ -169,7 +169,7 @@ enum Feature {
       Option.boolean('journalling'),
       Option.timeStruct('expiration'),
       Option.number('limit'),
-      Option.complex(
+      Option.object(
         'autoTimeout',
         options: {
           Option.timeStruct('duration'),
@@ -196,11 +196,11 @@ enum Feature {
       Option.string('channelId'),
       Option.boolean('journalling'),
       Option.management('management'),
-      Option.complex(
+      Option.object(
         'voting',
         options: {
           Option.management('management'),
-          Option.complex(
+          Option.object(
             'verdict',
             options: {
               Option.verdictRequirement('acceptance'),
@@ -216,9 +216,9 @@ enum Feature {
     description: 'features.dynamicVoiceChannels.description',
     icon: Symbols.voice_chat,
     options: {
-      Option.multiple(
+      Option.tuple(
         'channels',
-        option: Option.complex(
+        option: Option.object(
           'channel',
           options: {
             Option.string('id'),
@@ -241,9 +241,9 @@ enum Feature {
     icon: Symbols.work,
     options: {
       Option.number('limit'),
-      Option.multiple(
+      Option.tuple(
         'roles',
-        option: Option.complex(
+        option: Option.object(
           'role',
           options: {
             Option.string('roleId'),

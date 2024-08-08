@@ -14,7 +14,7 @@ class FeaturesPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 0.05.sw, vertical: 0.05.sh),
           child: GridView.count(
             crossAxisCount: 2,
-            childAspectRatio: 1.5,
+            childAspectRatio: 0.5,
             mainAxisSpacing: 0.01.sh,
             crossAxisSpacing: 0.01.sw,
             children: _featureGridTiles(context),
@@ -23,11 +23,6 @@ class FeaturesPage extends StatelessWidget {
       );
 
   List<Widget> _featureGridTiles(BuildContext context) => module.features
-      .map(
-        (feature) => FeatureCard.fromFeature(
-          context,
-          feature,
-        ),
-      )
+      .map((feature) => FeatureCard.fromFeature(context, feature))
       .toList();
 }

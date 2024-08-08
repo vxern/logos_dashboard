@@ -15,15 +15,20 @@ sealed class Option {
 
   const factory Option.number(String name) = NumberOption;
 
-  const factory Option.multiple(
-    String name, {
-    required Option option,
-  }) = MultipleOption;
-
-  const factory Option.complex(
+  const factory Option.object(
     String name, {
     required Set<Option> options,
-  }) = ComplexOption;
+  }) = ObjectOption;
+
+  const factory Option.array(
+    String name, {
+    required Option option,
+  }) = ArrayOption;
+
+  const factory Option.tuple(
+    String name, {
+    required Set<Option> options,
+  }) = TupleOption;
 
   const factory Option.map(
     String name, {
@@ -54,16 +59,22 @@ class NumberOption extends Option {
   const NumberOption(super.name);
 }
 
-class MultipleOption extends Option {
-  final Option option;
-
-  const MultipleOption(super.name, {required this.option});
-}
-
-class ComplexOption extends Option {
+class ObjectOption extends Option {
   final Set<Option> options;
 
-  const ComplexOption(super.name, {required this.options});
+  const ObjectOption(super.name, {required this.options});
+}
+
+class ArrayOption extends Option {
+  final Option option;
+
+  const ArrayOption(super.name, {required this.option});
+}
+
+class TupleOption extends Option {
+  final Set<Option> options;
+
+  const TupleOption(super.name, {required this.options});
 }
 
 class MapOption extends Option {
